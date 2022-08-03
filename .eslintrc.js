@@ -34,10 +34,19 @@ module.exports = {
         'input[type="image"]': ['InputImage'],
       },
     ],
+    'jsx-a11y/anchor-is-valid': [
+      //https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402
+      'error',
+      {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton'],
+      },
+    ],
   },
   settings: {
     react: {
-      version: 'latest',
+      version: 'detect',
     },
     'import/resolver': {
       node: {
