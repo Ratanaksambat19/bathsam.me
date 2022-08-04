@@ -12,8 +12,8 @@ export default function MainLayout({
     <>
       <HeadNextSeo linkTo={linkTo} seo={seo} />
       <div className="flex h-full">
-        <SideNav />
-        <div className="flex-auto h-full overflow-auto">{children}</div>
+        <SideNav className="flex-grow-0 flex-shrink-0 relative" />
+        <div className="h-full overflow-auto m-auto">{children}</div>
       </div>
     </>
   );
