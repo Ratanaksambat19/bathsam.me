@@ -1,9 +1,23 @@
-.active {
+.navWrap {
   width: 240px;
-  transition: width 200ms ease-in 0s;
+  transform: translateX(0);
+  transition: transform 200ms ease-in 0s;
 }
 
 .hide {
-  transition: width 200ms ease-in 0s;
+  transform: translateX(-100%);
+  transition: all 200ms ease-in 0s;
   width: 0;
 }
+/* .navWrap {
+  position: absolute;
+  width: 240px;
+  left: 0px;
+  top: 0;
+  transition: all 200ms ease-in 0s;
+}
+
+.hide {
+  left: -240px;
+  transition: all 200ms ease-in 0s;
+} */
