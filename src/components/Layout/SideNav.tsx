@@ -28,8 +28,9 @@ export const SideNav = ({ className }: { className?: string }) => {
         </button>
       )}
       <nav
-        className={`h-full space-y-4 py-4 overflow-hidden 
-        ${showSideNav ? style.active : style.hide}
+        className={`h-full space-y-4 py-4 overflow-hidden
+        ${style.navWrap} 
+        ${!showSideNav && style.hide}
         ${className}
         ${showSideNav ? 'bg-light-gray' : 'bg-white'}`}
       >
