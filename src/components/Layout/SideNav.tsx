@@ -11,7 +11,7 @@ import {
 } from 'react-icons/hi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import Link from 'next/link';
-import style from './SideNav.module.css';
+import DarkMode from 'components/DarkMode';
 
 export const SideNav = ({
   className,
@@ -68,8 +68,7 @@ export const SideNav = ({
               <span>Quick Find</span>
             </li>
             <li className="flex items-center space-x-4 text-text-LM">
-              <IoSettingsSharp />
-              <span>Settings</span>
+              <DarkMode />
             </li>
           </ul>
           <ul className="space-y-1">
