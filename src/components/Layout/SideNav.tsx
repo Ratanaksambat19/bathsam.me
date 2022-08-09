@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import {
   IoSearchSharp,
@@ -13,31 +13,40 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import Link from 'next/link';
 import style from './SideNav.module.css';
 
-export const SideNav = ({ className }: { className?: string }) => {
-  const [showSideNav, setShowSideNav] = useState(true);
-  console.log(showSideNav);
+export const SideNav = ({
+  className,
+  handleOpenNav,
+  isOpen,
+}: {
+  className?: string;
+  handleOpenNav: (params: boolean) => void;
+  isOpen: boolean;
+}) => {
   return (
     <>
-      {!showSideNav && (
+      {!isOpen && (
         <button
-          className="h-fit py-4 px-4 absolute"
+          className="h-fit py-4 px-4 absolute z-50"
           type="button"
-          onClick={() => setShowSideNav(true)}
+          onClick={() => handleOpenNav(true)}
         >
           <AiOutlineMenu className="text-text-LM" />
         </button>
       )}
       <nav
-        className={`h-full space-y-4 py-4 overflow-hidden
-        ${style.navWrap} 
-        ${!showSideNav && style.hide}
+        className={`h-full space-y-4 py-4 absolute w-[240px] top-0 overflow-hidden
+        ${
+          isOpen
+            ? 'left-0 transition-all duration-200 ease-linear'
+            : 'left-[-240px] transition-all duration-200 ease-linear'
+        }
         ${className}
-        ${showSideNav ? 'bg-light-gray' : 'bg-white'}`}
+        ${isOpen ? 'bg-light-gray' : 'bg-white'}`}
       >
         <button
           type="button"
           className="flex justify-end w-full px-4"
-          onClick={() => setShowSideNav(false)}
+          onClick={() => handleOpenNav(false)}
         >
           <HiOutlineChevronDoubleLeft className="text-text-LM" />
         </button>
