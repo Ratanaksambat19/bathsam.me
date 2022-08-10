@@ -7,15 +7,15 @@
 }
 
 .toggleThemeWrapper span {
-  font-size: 28px;
+  font-size: 14px;
   margin: 0 4px;
 }
 
 .toggleTheme {
   position: relative;
   display: inline-block;
-  height: 34px;
-  width: 60px;
+  height: 18px;
+  width: 46px;
 }
 
 .toggleTheme input {
@@ -35,13 +35,13 @@
 
 .slider:before {
   background-color: #fff;
-  bottom: 4px;
+  bottom: 1.5px;
   content: '';
-  height: 26px;
+  height: 14px;
   left: 4px;
   position: absolute;
   transition: 0.4s;
-  width: 26px;
+  width: 14px;
 }
 
 input:checked + .slider:before {

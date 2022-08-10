@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react';
+import React, { ChangeEventHandler, useEffect, useState } from 'react';
 import { setLocalStorage, getLocalStorage } from 'util/storage';
 import styles from './styles.module.css';
 
@@ -22,30 +22,44 @@ const prefersDark =
 const defaultDark =
   storedTheme === 'dark' || (storedTheme === null && prefersDark);
 
-if (defaultDark) {
-  setDark();
-}
-const toggleTheme: ChangeEventHandler<HTMLInputElement> = (e) => {
-  if (e.target.checked) {
-    setDark();
-  } else {
-    setLight();
-  }
-};
 const DarkMode = () => {
+  const [isCheck, setIsCheck] = useState<boolean>(false);
+
+  console.log(isCheck);
+
+  if (isCheck) {
+    setDark();
+  }
+
+  const toggleTheme: ChangeEventHandler<HTMLInputElement> = (e) => {
+    console.log('gg');
+
+    if (e.target.checked) {
+      setDark();
+    } else {
+      setLight();
+    }
+    setIsCheck(e.target.checked);
+  };
+
+  useEffect(() => {
+    setIsCheck(defaultDark);
+  }, []);
+
   return (
-    <div className={styles.toggleThemeWrapper}>
-      <span>☀️</span>
+    <div className={`${styles.toggleThemeWrapper} space-x-2`}>
+      <span>🌞</span>
       <label className={styles.toggleTheme} htmlFor="checkbox">
         <input
           type="checkbox"
           id="checkbox"
           onChange={toggleTheme}
-          defaultChecked={defaultDark}
+          name="toggle"
+          checked={isCheck}
         />
         <div className={`${styles.slider} ${styles.round}`} />
       </label>
-      <span>🌒</span>
+      <span>🌚</span>
     </div>
   );
 };
