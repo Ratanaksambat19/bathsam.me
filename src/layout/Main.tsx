@@ -36,16 +36,14 @@ export default function MainLayout({
           isOpen={openNav}
           className="flex-grow-0 z-30 flex-shrink-0 relative"
         />
-        <div className="w-full absolute top-0 left-[240px]">
-          <div
-            className={`h-full w-full m-auto absolute ${
-              openNav
-                ? 'left-0 transition-all duration-200 ease-linear'
-                : 'left-[-240px] transition-all duration-200 ease-linear'
-            }`}
-          >
-            {children}
-          </div>
+        <div
+          className={`h-full w-full m-auto bottom-0 overflow-auto absolute ${
+            openNav
+              ? 'left-[240px] transition-all duration-200 ease-linear'
+              : 'left-[0px] transition-all duration-200 ease-linear'
+          }`}
+        >
+          {children}
         </div>
       </div>
     </>
