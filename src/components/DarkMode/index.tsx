@@ -1,5 +1,7 @@
 import React, { ChangeEventHandler } from 'react';
 import { setLocalStorage, getLocalStorage } from 'util/storage';
+import styles from './styles.module.css';
+
 const setDark = () => {
   setLocalStorage('theme', 'dark');
   document.documentElement.setAttribute('data-theme', 'dark');
@@ -23,7 +25,6 @@ const defaultDark =
 if (defaultDark) {
   setDark();
 }
-
 const toggleTheme: ChangeEventHandler<HTMLInputElement> = (e) => {
   if (e.target.checked) {
     setDark();
@@ -31,19 +32,18 @@ const toggleTheme: ChangeEventHandler<HTMLInputElement> = (e) => {
     setLight();
   }
 };
-
 const DarkMode = () => {
   return (
-    <div className="toggle-theme-wrapper">
+    <div className={styles.toggleThemeWrapper}>
       <span>☀️</span>
-      <label className="toggle-theme" htmlFor="checkbox">
+      <label className={styles.toggleTheme} htmlFor="checkbox">
         <input
           type="checkbox"
           id="checkbox"
           onChange={toggleTheme}
           defaultChecked={defaultDark}
         />
-        <div className="slider round"></div>
+        <div className={`${styles.slider} ${styles.round}`} />
       </label>
       <span>🌒</span>
     </div>
