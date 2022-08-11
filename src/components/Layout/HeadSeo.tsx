@@ -22,24 +22,32 @@ export default function HeadNextSeo({
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/images/apple-touch-icon.png"
+          href="/favicons/apple-touch-icon.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/images/favicon-32x32.png"
+          href="/favicons/favicon-32x32.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/images/favicon-16x16.png"
+          href="/favicons/favicon-16x16.png"
         />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="manifest" href="/favicons/manifest.json" />
+        <link
+          rel="mask-icon"
+          href="/favicons/safari-pinned-tab.svg"
+          color="#5bbad5"
+        />
+        <link rel="icon" type="image/x-icon" href="/favicons/favicon.ico" />
+        <link
+          rel="shortcut icon"
+          type="image/x-icon"
+          href="/favicons/favicon.ico"
+        />
 
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
