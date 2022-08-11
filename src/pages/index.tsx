@@ -43,8 +43,9 @@ export default function Home() {
 
 export async function getStaticProps() {
   const homeSeo: seo = {
-    title: 'home page',
-    description: 'hello this is homepage',
+    title: 'About me',
+    description:
+      'Same as every uni student, University is tough there was a lot of lost and found during the 1st & 2nd year, So I decided explore as much as I can until I catch interest in Web development',
     images: [],
   };
   return {
