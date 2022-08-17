@@ -23,7 +23,8 @@ const defaultDark =
   storedTheme === 'dark' || (storedTheme === null && prefersDark);
 
 const DarkMode = () => {
-  const [isCheck, setIsCheck] = useState<boolean>(false);
+  const [isCheck, setIsCheck] = useState<boolean>(defaultDark);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
 
   console.log(isCheck);
 
@@ -43,10 +44,11 @@ const DarkMode = () => {
   };
 
   useEffect(() => {
-    setIsCheck(defaultDark);
+    // setIsCheck(defaultDark);
+    setIsMounted(true);
   }, []);
 
-  return (
+  return isMounted ? (
     <div className={`${styles.toggleThemeWrapper} space-x-2`}>
       <span>🌞</span>
       <label className={styles.toggleTheme} htmlFor="checkbox">
@@ -61,6 +63,8 @@ const DarkMode = () => {
       </label>
       <span>🌚</span>
     </div>
+  ) : (
+    <div></div>
   );
 };
 

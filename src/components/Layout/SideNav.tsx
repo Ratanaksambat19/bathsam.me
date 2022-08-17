@@ -1,10 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import {
-  IoSearchSharp,
-  IoSettingsSharp,
-  IoCaretForwardSharp,
-} from 'react-icons/io5';
+import { IoSearchSharp, IoCaretForwardSharp } from 'react-icons/io5';
 import {
   HiOutlineArrowsExpand,
   HiOutlineChevronDoubleLeft,
