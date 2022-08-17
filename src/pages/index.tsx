@@ -1,17 +1,23 @@
 import React from 'react';
 import { seo } from 'types/interface/seo';
 import { Container } from 'components/Layout/Container';
-import { Title, Quote } from 'components/common';
+import { Title, Quote, CallOut } from 'components/common';
 
 export default function Home() {
   return (
     <Container>
       <Title icon="👾" text="About Me" />
-      <Quote className="text-2xl text-dark-blue border-dark-blue">
+      <Quote className="text-2xl border-dark-blue">
         <p>Pronounce: MR</p>
         <p>Career: Web developer</p>
         <p>Hobby: 📷🍿🏀🧑🏻‍💻</p>
       </Quote>
+      <CallOut icon="👉🏼">
+        Hi I’m Sambath, Currently a 3 year student major in Software
+        Engineering, Campus based in Kirirom, Cambodia. Originally a
+        Battambanger moved to the city to pursue better education after
+        high-school.{' '}
+      </CallOut>
       <ol className="space-y-8">
         <li className="space-y-4">
           <p className="text-3xl font-semibold">1. What is your full name ?</p>

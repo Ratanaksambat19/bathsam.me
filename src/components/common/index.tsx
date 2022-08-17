@@ -1,4 +1,4 @@
 import { Quote } from './Quote';
 import { Title } from './Text';
-
-export { Quote, Title };
+import { CallOut } from './CallOut';
+export { Quote, Title, CallOut };

@@ -27,15 +27,19 @@ a {
 /* dark mode */
 
 :root {
-  --font-color: #333;
-  --background-color: #eee;
-  --link-color: cornflowerblue;
+  --font-color: #37352f;
+  --background-color: #ffffff;
+  --link-color: #73726f;
+  --nav-color: #fbfbfa;
+  --callout-background-color: #f1f1ef;
 }
 
 [data-theme='dark'] {
-  --font-color: #eee;
-  --background-color: #333;
-  --link-color: lightblue;
+  --font-color: #d4d4d4;
+  --background-color: #191919;
+  --link-color: #9b9b9b;
+  --nav-color: #202020;
+  --callout-background-color: #252525;
 }
 
 body {
@@ -45,4 +49,16 @@ body {
 
 a {
   color: var(--link-color);
+}
+
+span {
+  color: var(--link-color);
+}
+
+nav {
+  background-color: var(--nav-color);
+}
+
+#callOut {
+  background-color: var(--callout-background-color);
 }

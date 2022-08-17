@@ -37,7 +37,7 @@ export const SideNav = ({
             : 'left-[-240px] transition-all duration-200 ease-linear'
         }
         ${className}
-        ${isOpen ? 'bg-light-gray' : 'bg-white'}`}
+        `}
       >
         <button
           type="button"

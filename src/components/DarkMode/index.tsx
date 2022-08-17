@@ -26,15 +26,11 @@ const DarkMode = () => {
   const [isCheck, setIsCheck] = useState<boolean>(defaultDark);
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
-  console.log(isCheck);
-
   if (isCheck) {
     setDark();
   }
 
   const toggleTheme: ChangeEventHandler<HTMLInputElement> = (e) => {
-    console.log('gg');
-
     if (e.target.checked) {
       setDark();
     } else {
