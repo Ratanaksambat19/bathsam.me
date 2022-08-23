@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { IoSearchSharp, IoCaretForwardSharp } from 'react-icons/io5';
+import {
+  IoSearchSharp,
+  IoCaretForwardSharp,
+  IoCaretDownSharp,
+} from 'react-icons/io5';
 import {
   HiOutlineArrowsExpand,
   HiOutlineChevronDoubleLeft,
@@ -8,6 +12,11 @@ import {
 import { AiOutlineMenu } from 'react-icons/ai';
 import Link from 'next/link';
 import DarkMode from 'components/DarkMode';
+import { navBtns } from 'constants/navBtns';
+
+type BtnState = {
+  [key: string]: boolean;
+};
 
 export const SideNav = ({
   className,
@@ -18,6 +27,20 @@ export const SideNav = ({
   handleOpenNav: (params: boolean) => void;
   isOpen: boolean;
 }) => {
+  const initialBtnState: BtnState = {};
+  for (let i = 0; i <= navBtns.length - 1; i++) {
+    initialBtnState[navBtns[i].id] = false;
+  }
+
+  const [activeChild, setActiveChild] = useState<BtnState>(initialBtnState);
+
+  const handleSetActiveChild = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const id = e.currentTarget.value;
+    setActiveChild({
+      ...activeChild,
+      [id]: !activeChild[id],
+    });
+  };
   return (
     <>
       {!isOpen && (
@@ -71,44 +94,46 @@ export const SideNav = ({
             <small className="text-text-LM">FAVORITE</small>
             <li>
               <Link href="/">
-                <a>👾 About me</a>
+                <a className="flex w-full px-1">👾 About me</a>
               </Link>
             </li>
           </ul>
           <ul className="space-y-1">
             <small className="text-text-LM">CATEGORIES</small>
-            <li>
-              <Link href="/about">
-                <a>
-                  <IoCaretForwardSharp className="inline-block text-text-LM" />
-                  <span className="ml-1">📝 Blogs</span>
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/about">
-                <a>
-                  <IoCaretForwardSharp className="inline-block text-text-LM" />
-                  <span className="ml-1">🗒 Daily logs</span>
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/about">
-                <a>
-                  <IoCaretForwardSharp className="inline-block text-text-LM" />
-                  <span className="ml-1">📂 Projects</span>
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/about">
-                <a>
-                  <IoCaretForwardSharp className="inline-block text-text-LM" />
-                  <span className="ml-1">🚲 My Journey</span>
-                </a>
-              </Link>
-            </li>
+            {navBtns.map((btn) => (
+              <li key={btn.id}>
+                <Link href={btn.linkTo}>
+                  <a
+                    className="w-full flex px-1 rounded-sm"
+                    {...(activeChild[btn.id] && { id: 'clickedBtn' })}
+                  >
+                    {btn.children.length !== 0 && (
+                      <button
+                        value={btn.id}
+                        onClick={(e) => handleSetActiveChild(e)}
+                      >
+                        {activeChild[btn.id] ? (
+                          <IoCaretDownSharp className="inline-block text-text-LM" />
+                        ) : (
+                          <IoCaretForwardSharp className="inline-block text-text-LM" />
+                        )}
+                        <span className="ml-1">{btn.title}</span>
+                      </button>
+                    )}
+                  </a>
+                </Link>
+                {activeChild[btn.id] && btn.children.length !== 0 && (
+                  <ul className="ml-4">
+                    {btn.children.map((childBtn) => (
+                      <li key={childBtn.id}>
+                        <span className="text-xl">•</span>
+                        <span className="ml-2">{childBtn.title}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
           </ul>
         </nav>
       </nav>

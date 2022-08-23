@@ -32,6 +32,7 @@ a {
   --link-color: #73726f;
   --nav-color: #fbfbfa;
   --callout-background-color: #f1f1ef;
+  --hover-background-color: #ebebea;
 }
 
 [data-theme='dark'] {
@@ -40,6 +41,7 @@ a {
   --link-color: #9b9b9b;
   --nav-color: #202020;
   --callout-background-color: #252525;
+  --hover-background-color: #2c2b2d;
 }
 
 body {
@@ -61,4 +63,12 @@ nav {
 
 #callOut {
   background-color: var(--callout-background-color);
+}
+
+a:hover {
+  background-color: var(--hover-background-color);
+}
+
+#clickedBtn {
+  background-color: var(--hover-background-color);
 }
