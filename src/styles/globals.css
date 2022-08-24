@@ -69,6 +69,10 @@ a:hover {
   background-color: var(--hover-background-color);
 }
 
+li > div:hover {
+  background-color: var(--hover-background-color);
+}
+
 #clickedBtn {
   background-color: var(--hover-background-color);
 }

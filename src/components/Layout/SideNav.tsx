@@ -13,6 +13,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import Link from 'next/link';
 import DarkMode from 'components/DarkMode';
 import { navBtns } from 'constants/navBtns';
+import { useRouter } from 'next/router';
 
 type BtnState = {
   [key: string]: boolean;
@@ -33,6 +34,10 @@ export const SideNav = ({
   }
 
   const [activeChild, setActiveChild] = useState<BtnState>(initialBtnState);
+  const [activePage, setActivePage] = useState('/');
+
+  const router = useRouter();
+  const { pathname } = router;
 
   const handleSetActiveChild = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.value;
@@ -40,6 +45,11 @@ export const SideNav = ({
       ...activeChild,
       [id]: !activeChild[id],
     });
+  };
+
+  const handleSetActivePage = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const page = e.currentTarget.value;
+    setActivePage(page);
   };
   return (
     <>
@@ -102,26 +112,34 @@ export const SideNav = ({
             <small className="text-text-LM">CATEGORIES</small>
             {navBtns.map((btn) => (
               <li key={btn.id}>
-                <Link href={btn.linkTo}>
-                  <a
-                    className="w-full flex px-1 rounded-sm"
-                    {...(activeChild[btn.id] && { id: 'clickedBtn' })}
-                  >
-                    {btn.children.length !== 0 && (
+                <div
+                  className="w-full flex px-1 rounded-sm"
+                  {...(activePage === btn.linkTo && { id: 'clickedBtn' })}
+                >
+                  {btn.children.length !== 0 && (
+                    <button
+                      value={btn.id}
+                      onClick={(e) => handleSetActiveChild(e)}
+                    >
+                      {activeChild[btn.id] ? (
+                        <IoCaretDownSharp className="inline-block text-text-LM" />
+                      ) : (
+                        <IoCaretForwardSharp className="inline-block text-text-LM" />
+                      )}
+                    </button>
+                  )}
+                  <Link href={btn.linkTo}>
+                    <a>
                       <button
-                        value={btn.id}
-                        onClick={(e) => handleSetActiveChild(e)}
+                        value={btn.linkTo}
+                        onClick={(e) => handleSetActivePage(e)}
+                        className="ml-1"
                       >
-                        {activeChild[btn.id] ? (
-                          <IoCaretDownSharp className="inline-block text-text-LM" />
-                        ) : (
-                          <IoCaretForwardSharp className="inline-block text-text-LM" />
-                        )}
-                        <span className="ml-1">{btn.title}</span>
+                        {btn.title}
                       </button>
-                    )}
-                  </a>
-                </Link>
+                    </a>
+                  </Link>
+                </div>
                 {activeChild[btn.id] && btn.children.length !== 0 && (
                   <ul className="ml-4">
                     {btn.children.map((childBtn) => (
