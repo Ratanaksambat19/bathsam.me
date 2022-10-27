@@ -69,7 +69,7 @@ export default function HeadNextSeo({
               ? seo?.description
               : 'A short description goes here.',
           images: [{ url: `${getDomain()}${seo?.images}` }],
-          site_name: 'Sa gaming',
+          site_name: 'Doung ratanaksambat',
           type: 'website',
         }}
         twitter={{

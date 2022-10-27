@@ -1,7 +1,7 @@
 import React from 'react';
 import { seo } from 'types/interface/seo';
 import { Container } from 'components/Layout/Container';
-import { Title, Quote, CallOut } from 'components/common';
+import { Title, Quote, CallOut } from 'components/Common';
 
 export default function Home() {
   return (

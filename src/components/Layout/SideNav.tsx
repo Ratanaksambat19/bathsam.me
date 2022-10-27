@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import {
   IoSearchSharp,
@@ -14,6 +14,7 @@ import Link from 'next/link';
 import DarkMode from 'components/DarkMode';
 import { navBtns } from 'constants/navBtns';
 import { useRouter } from 'next/router';
+import cx from 'classnames';
 
 type BtnState = {
   [key: string]: boolean;
@@ -47,6 +48,10 @@ export const SideNav = ({
     });
   };
 
+  useEffect(() => {
+    setActivePage(pathname);
+  }, [pathname]);
+
   const handleSetActivePage = (e: React.MouseEvent<HTMLButtonElement>) => {
     const page = e.currentTarget.value;
     setActivePage(page);
@@ -63,14 +68,13 @@ export const SideNav = ({
         </button>
       )}
       <nav
-        className={`h-full space-y-4 py-4 absolute w-[240px] top-0 overflow-hidden
-        ${
+        className={cx(
+          'h-full space-y-4 py-4 absolute w-[240px] top-0 overflow-hidden',
           isOpen
             ? 'left-0 transition-all duration-200 ease-linear'
-            : 'left-[-240px] transition-all duration-200 ease-linear'
-        }
-        ${className}
-        `}
+            : 'left-[-240px] transition-all duration-200 ease-linear',
+          className
+        )}
       >
         <button
           type="button"
@@ -79,7 +83,7 @@ export const SideNav = ({
         >
           <HiOutlineChevronDoubleLeft className="text-text-LM" />
         </button>
-        <nav className={`px-4 h-full space-y-4 `}>
+        <div className="px-4 h-full space-y-4">
           <div className="flex items-center space-x-2">
             <Image
               className=""
@@ -91,20 +95,28 @@ export const SideNav = ({
             <span className="">Ratanaksambat</span>
             <HiOutlineArrowsExpand className="text-text-LM" />
           </div>
-          <ul className="ml-2">
-            <li className="flex items-center space-x-4 text-text-LM">
+          <div className="ml-2">
+            <div className="flex items-center space-x-4 text-text-LM">
               <IoSearchSharp />
               <span>Quick Find</span>
-            </li>
-            <li className="flex items-center space-x-4 text-text-LM">
+            </div>
+            <div className="flex items-center space-x-4 text-text-LM">
               <DarkMode />
-            </li>
-          </ul>
+            </div>
+          </div>
           <ul className="space-y-1">
             <small className="text-text-LM">FAVORITE</small>
-            <li>
+            <li {...(activePage === '/' && { id: 'clickedBtn' })}>
               <Link href="/">
-                <a className="flex w-full px-1">👾 About me</a>
+                <a className="flex w-full px-1 rounded-sm">
+                  <button
+                    value="/"
+                    onClick={handleSetActivePage}
+                    className="ml-1"
+                  >
+                    👾 About me
+                  </button>
+                </a>
               </Link>
             </li>
           </ul>
@@ -117,10 +129,7 @@ export const SideNav = ({
                   {...(activePage === btn.linkTo && { id: 'clickedBtn' })}
                 >
                   {btn.children.length !== 0 && (
-                    <button
-                      value={btn.id}
-                      onClick={(e) => handleSetActiveChild(e)}
-                    >
+                    <button value={btn.id} onClick={handleSetActiveChild}>
                       {activeChild[btn.id] ? (
                         <IoCaretDownSharp className="inline-block text-text-LM" />
                       ) : (
@@ -132,7 +141,7 @@ export const SideNav = ({
                     <a>
                       <button
                         value={btn.linkTo}
-                        onClick={(e) => handleSetActivePage(e)}
+                        onClick={handleSetActivePage}
                         className="ml-1"
                       >
                         {btn.title}
@@ -153,7 +162,13 @@ export const SideNav = ({
               </li>
             ))}
           </ul>
-        </nav>
+        </div>
+        <small className="text-center w-full absolute bottom-2">
+          Highly inspired by{' '}
+          <a href="https://www.notion.so/" target="blank">
+            @Notion
+          </a>
+        </small>
       </nav>
     </>
   );
