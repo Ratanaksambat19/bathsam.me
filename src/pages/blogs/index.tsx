@@ -1,5 +1,5 @@
 import React from 'react';
-import { CallOut, Title } from 'components/Common';
+import { CallOut, Title } from 'components/Commons';
 import { Container } from 'components/Layout/Container';
 
 export default function Blogs() {
