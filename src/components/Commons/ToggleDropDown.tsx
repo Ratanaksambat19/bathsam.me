@@ -35,7 +35,7 @@ export const ToggleDropDown = ({ navBtns }: { navBtns: INavBtn[] }) => {
       {activeChild.map((btn) => (
         <li
           key={btn.id}
-          {...(activePage === btn.linkTo && { id: 'clickedBtn' })}
+          // {...(activePage === btn.linkTo && { id: 'clickedBtn' })}
         >
           {btn.level === 0 ? (
             <>
@@ -78,7 +78,7 @@ export const ToggleDropDown = ({ navBtns }: { navBtns: INavBtn[] }) => {
             </>
           ) : (
             // btn.isActive && (
-            <div className="ml-4">
+            <div className="ml-4 mt-1 pl-1">
               <li key={btn.id}>
                 <span className="text-xl">•</span>
                 <span className="ml-2">{btn.title}</span>
