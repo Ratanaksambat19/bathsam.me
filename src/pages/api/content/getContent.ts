@@ -1,5 +1,6 @@
 import { Client } from '@notionhq/client';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { blogFormatter } from 'util/blogFormatter';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -22,9 +23,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       database_id: databaseId,
     });
 
+    const formmatedData = blogFormatter(dataQuery);
+
     switch (req.method) {
       case 'GET':
-        return res.status(200).json(blocks);
+        return res.status(200).json(formmatedData);
       default:
         return res.status(405).json({
           message: 'Method Not Allowed',

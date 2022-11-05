@@ -39,7 +39,7 @@ export default function MainLayout({
         <div
           className={`h-full w-full m-auto bottom-0 overflow-auto absolute ${
             openNav
-              ? 'left-[240px] md:left-[100px] transition-all duration-200 ease-linear'
+              ? 'left-[240px] md:left-[240px] lg:left-[100px] transition-all duration-200 ease-linear'
               : 'left-[0px] transition-all duration-200 ease-linear'
           }`}
         >
